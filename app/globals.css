@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist), 'Geist Fallback', ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --color-shielded: var(--shielded);
+  --color-shielded-foreground: var(--shielded-foreground);
+  --color-public: var(--public);
+  --color-public-foreground: var(--public-foreground);
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-scanline: scanline 2.4s ease-in-out infinite;
+  --animate-holo: holo 6s linear infinite;
+  --animate-pulse-ring: pulse-ring 2s ease-out infinite;
+  --animate-nudge: nudge 0.6s ease-out;
+  --animate-alarm: alarm 1.6s ease-out forwards;
+
+  @keyframes alarm {
+    0%,
+    40% {
+      opacity: 0;
+    }
+    8%,
+    28% {
+      opacity: 1;
+    }
+    18% {
+      opacity: 0.35;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes scanline {
+    0%,
+    100% {
+      top: 6%;
+    }
+    50% {
+      top: 90%;
+    }
+  }
+  @keyframes holo {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+  @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 45%, transparent);
+    }
+    100% {
+      box-shadow: 0 0 0 18px color-mix(in oklab, var(--primary) 0%, transparent);
+    }
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    35% {
+      translate: 28px 0;
+    }
+    65% {
+      translate: 8px 0;
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --background: #0b0e14;
+  --foreground: #f2f0eb;
+  --card: #17191e;
+  --card-foreground: #f2f0eb;
+  --popover: #1c1e24;
+  --popover-foreground: #f2f0eb;
+  --primary: #ef8b4c;
+  --primary-foreground: #16110d;
+  --secondary: #22252b;
+  --secondary-foreground: #f2f0eb;
+  --muted: #262930;
+  --muted-foreground: #9c9ea3;
+  --accent: #ef8b4c;
+  --accent-foreground: #16110d;
+  --destructive: #ef5b52;
+  --border: #2a2d34;
+  --input: #30333b;
+  --ring: #ef8b4c;
+
+  --sage: #a9b8b4;
+  --sage-foreground: #0b0e14;
+  --shielded: #5fd49a;
+  --shielded-foreground: #0b0e14;
+  --public: #a9b8b4;
+  --public-foreground: #0b0e14;
+
+  --chart-1: #ef8b4c;
+  --chart-2: #a9b8b4;
+  --chart-3: #5fd49a;
+  --chart-4: #9c9ea3;
+  --chart-5: #ef5b52;
+  --radius: 1rem;
+  --sidebar: #17191e;
+  --sidebar-foreground: #f2f0eb;
+  --sidebar-primary: #ef8b4c;
+  --sidebar-primary-foreground: #16110d;
+  --sidebar-accent: #22252b;
+  --sidebar-accent-foreground: #f2f0eb;
+  --sidebar-border: #2a2d34;
+  --sidebar-ring: #ef8b4c;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background font-sans text-foreground;
+  }
+}
+
+@utility bg-terminal-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Sage-to-sand dusk panel, lifted from the reference's hero screens */
+@utility bg-dusk {
+  background-image: linear-gradient(180deg, #5d6b67 0%, #7f7d75 55%, #a57e61 100%);
+}
+
+@utility bg-dusk-veil {
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in oklab, #5d6b67 55%, transparent) 0%,
+    color-mix(in oklab, #737670 88%, transparent) 50%,
+    #9c7a60 100%
+  );
+}
+
+@utility bg-ember {
+  background-image: linear-gradient(170deg, #e8773a 0%, #ef955a 55%, #d7ab89 100%);
+}
+
+@utility bg-holo {
+  background-image: linear-gradient(
+    115deg,
+    transparent 20%,
+    color-mix(in oklab, var(--foreground) 28%, transparent) 42%,
+    color-mix(in oklab, var(--sage) 22%, transparent) 55%,
+    transparent 75%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
