@@ -1,33 +1,34 @@
-# zecpass
+# ZecPass // Native Shielded Admittance Protocol
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+> Fair-price event ticketing, native shielded admittance, and zero bot scalping. Built for Zecathon.
 
-## Built with v0
+## Overview
+ZecPass eliminates bot-driven ticket scalping and invasive biometric gate checks by combining Zcash Shielded Assets (ZSAs) with client-side zero-knowledge proofs.
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+## The Problem
+- **Web2 Gatekeepers:** Rely on invasive biometric surveillance, strict lead-booker policies, and dynamic surge pricing while locking fans into proprietary ecosystems.
+- **Transparent Web3:** Public smart contracts leak wallet balances, allow MEV bots to frontrun primary drops, and fail to prevent off-chain scalping when peer-to-peer transfers are enabled.
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_TrX6jFXSzPNhZlAfmMPjmo887cpM)
+## Protocol Architecture & Defense Model
+- **Sealed Mempool Minting (Orchard Pool):** Transactions remain fully encrypted within shielded notes, neutralizing frontrunning and bot sniping.
+- **1-Ticket-Per-Human Sybil Resistance:** Enforces allocation limits via blind zero-knowledge nullifiers without requiring KYC or identity doxing.
+- **Automated Burn-and-Refund Secondary Engine:** Unilateral peer-to-peer transfers are disabled. Pass holders unable to attend burn their pass back to the protocol treasury for an instant, 100% face-value refund. The pass is automatically reallocated to verified fans on the encrypted waitlist, eliminating secondary markups.
+- **Offline Turnstile Verification:** Gates verify ephemeral, 60-second client-side zero-knowledge proofs locally against a cached Merkle root, ensuring zero turnstile downtime during stadium cellular outages.
 
-## Getting Started
+## Interactive Reviewer Controls
+Use the floating **Demo Control** console in the application to evaluate all core protocol states:
+- **State A (Fresh Buyer):** Primary drop minting flow.
+- **State B (Ticket Holder):** Vault inspection and Burn-and-Refund execution.
+- **State C (Turnstile Gate):** Dynamic 60-second QR generation and offline bouncer scanner verification.
+- **State D (Sybil Rejection):** Duplicate purchase defense simulation.
 
-First, run the development server:
+## Tech Stack
+- **Framework:** Next.js, React, Tailwind CSS
+- **Design System:** Radix UI / Shadcn
+- **Architecture:** Client-side zero-knowledge state machine specification
+- **Deployment:** Vercel
 
+## Local Setup
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
