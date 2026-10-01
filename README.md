@@ -16,11 +16,12 @@ ZecPass eliminates bot-driven ticket scalping and invasive biometric gate checks
 - **Offline Turnstile Verification:** Gates verify ephemeral, 60-second client-side zero-knowledge proofs locally against a cached Merkle root, ensuring zero turnstile downtime during stadium cellular outages.
 
 ## Interactive Reviewer Controls
-Use the floating **Demo Control** console in the application to evaluate all core protocol states:
-- **State A (Fresh Buyer):** Primary drop minting flow.
-- **State B (Ticket Holder):** Vault inspection and Burn-and-Refund execution.
-- **State C (Turnstile Gate):** Dynamic 60-second QR generation and offline bouncer scanner verification.
-- **State D (Sybil Rejection):** Duplicate purchase defense simulation.
+The web interface features an interactive Demo Control Console allowing reviewers to test all protocol states and attack defenses in real-time:
+- **State A (Fresh Buyer):** Clean state with an empty vault to test primary pass minting.
+- **State B (Active Ticket Holder):** Pass holder state to inspect credentials and trigger the 100% face-value Burn-and-Refund engine.
+- **State C (Venue Turnstile Gate):** Live bouncer view simulating guest check-in via ephemeral dynamic proofs.
+- **State D (Duplicate / Sybil Rejection):** Simulates an attack where a user attempts a second mint with the same identity nullifier, demonstrating immediate protocol rejection.
+- **State E (Turnstile Fraud Attempt):** Simulates a static screenshot or replayed expired QR attempt, demonstrating turnstile gate denial.
 
 ## Tech Stack
 - **Framework:** Next.js, React, Tailwind CSS
